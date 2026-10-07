@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Lectores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Listado de Lectores</h2>
+        <a href="{% url 'crear_lector' %}" class="btn btn-success">+ Agregar Lector</a>
+    </div>
+
+    <!-- Buscador -->
+    <form method="GET" class="mb-4 d-flex gap-2">
+        <input type="text" name="buscar" class="form-control" placeholder="Buscar por nombre..." value="{{ busqueda }}">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+        {% if busqueda %}
+            <a href="{% url 'listar_lectores' %}" class="btn btn-outline-secondary">Limpiar</a>
+        {% endif %}
+    </form>
+
+    <!-- Tabla -->
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre Completo</th>
+                <th>N° Socio</th>
+                <th>Cuota al Día</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lector in lectores %}
+            <tr>
+                <td>{{ lector.id }}</td>
+                <td>{{ lector.nombre_completo }}</td>
+                <td>{{ lector.numero_socio }}</td>
+                <td>
+                    {% if lector.cuota_al_dia %}
+                        <span class="badge bg-success">Sí</span>
+                    {% else %}
+                        <span class="badge bg-danger">No</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'editar_lector' lector.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{% url 'eliminar_lector' lector.pk %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center text-muted">No se encontraron lectores registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

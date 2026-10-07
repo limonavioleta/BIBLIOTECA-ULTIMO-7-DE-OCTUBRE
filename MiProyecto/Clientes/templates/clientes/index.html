@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIBLIOTECA SaBré - Inicio</title>
+    <style>
+        /* Paleta exacta del diseño Stitch */
+        :root {
+            --bg-principal: #121212;
+            --bg-tarjeta: #1a1a1a;
+            --color-amarillo: #d2ff00;
+            --texto-blanco: #ffffff;
+            --texto-gris: #aaaaaa;
+            --borde-tarjeta: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-blanco);
+            padding: 20px 40px;
+        }
+
+        /* Encabezado Principal */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--texto-blanco);
+        }
+
+        nav a {
+            color: var(--texto-blanco);
+            text-decoration: none;
+            margin: 0 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .header-acciones {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-buscar-icon {
+            background-color: transparent;
+            border: 1px solid var(--color-amarillo);
+            color: var(--color-amarillo);
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        .btn-accesibilidad {
+            background-color: var(--color-amarillo);
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Cartel Ayudante de Biblioteca */
+        .badge-ayudante {
+            display: inline-block;
+            background-color: var(--color-amarillo);
+            color: #000;
+            font-weight: bold;
+            padding: 10px 18px;
+            font-size: 1.1rem;
+            margin: 20px 0;
+            box-shadow: 0 0 15px rgba(210, 255, 0, 0.3);
+        }
+
+        /* Banner Hero Principal */
+        .hero {
+            border: 1px solid var(--color-amarillo);
+            padding: 35px;
+            margin-bottom: 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #161616;
+        }
+
+        .hero-texto {
+            max-width: 55%;
+        }
+
+        .hero-texto h1 {
+            color: var(--color-amarillo);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-texto p {
+            color: var(--texto-gris);
+            line-height: 1.5;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .btn-explorar {
+            background-color: var(--color-amarillo);
+            color: #000;
+            padding: 12px 24px;
+            border: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        /* Ilustración Derecha del Hero */
+        .hero-imagen-box {
+            width: 320px;
+            height: 180px;
+            border: 1px solid var(--texto-gris);
+            background-color: #0d0d0d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-imagen-box svg {
+            width: 80px;
+            fill: var(--color-amarillo);
+        }
+
+        /* Sección de Servicios */
+        .titulo-seccion {
+            color: var(--color-amarillo);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .grid-servicios-arriba {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .grid-servicios-abajo {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+            max-width: 66.66%;
+        }
+
+        .tarjeta-servicio {
+            border: 1px solid var(--borde-tarjeta);
+            background-color: var(--bg-tarjeta);
+            padding: 20px;
+        }
+
+        .icono-servicio {
+            background-color: var(--color-amarillo);
+            color: #000;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        .tarjeta-servicio h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--texto-blanco);
+        }
+
+        .tarjeta-servicio p {
+            font-size: 0.82rem;
+            color: var(--texto-gris);
+            line-height: 1.3;
+        }
+
+        /* Sección Catálogo de Comprar / Reservar Libros */
+        .contenedor-productos {
+            border: 1px solid var(--borde-tarjeta);
+            padding: 25px;
+            background-color: var(--bg-tarjeta);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th {
+            color: var(--color-amarillo);
+            font-size: 0.8rem;
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #333;
+        }
+
+        td {
+            padding: 14px 12px;
+            font-size: 0.88rem;
+            border-bottom: 1px solid #282828;
+        }
+
+        .btn-comprar {
+            background-color: var(--color-amarillo);
+            color: #000;
+            border: none;
+            padding: 6px 14px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--color-amarillo);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado con buscador y accesibilidad -->
+    <header>
+        <div class="logo">BIBLIOTECA SaBré</div>
+        <nav>
+            <a href="#">Préstamos de Libros</a>
+            <a href="#">Audio Libro</a>
+            <a href="#">Braille</a>
+            <a href="#">Talleres</a>
+            <a href="#">Informática</a>
+        </nav>
+        <div class="header-acciones">
+            <button class="btn-buscar-icon">🔍</button>
+            <button class="btn-accesibilidad">Accesibilidad</button>
+        </div>
+    </header>
+
+    <!-- Cartel destacado -->
+    <div class="badge-ayudante">AYUDANTE DE BIBLIOTECA</div>
+
+    <!-- Banner Principal con gráfica -->
+    <section class="hero">
+        <div class="hero-texto">
+            <h1>ACCESO TOTAL A LA CULTURA</h1>
+            <p>Una biblioteca diseñada sin barreras. Descubre nuestro vasto catálogo de recursos accesibles, desde audiolibros hasta textos en braille, en un entorno pensado para todos.</p>
+            <button class="btn-explorar">Explorar Catálogo</button>
+        </div>
+        <div class="hero-imagen-box">
+            <!-- Icono de libro accesible estilo Stitch -->
+            <svg viewBox="0 0 24 24">
+                <path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.2.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.35-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Nuestros Servicios (Distribución 3 arriba, 2 abajo) -->
+    <h2 class="titulo-seccion">Nuestros Servicios</h2>
+    
+    <div class="grid-servicios-arriba">
+        <div class="tarjeta-servicio">
+            <div class="icono-servicio">📖</div>
+            <h3>Préstamos</h3>
+            <p>Libros en macrotipos y formatos adaptados para baja visión.</p>
+        </div>
+        <div class="tarjeta-servicio">
+            <div class="icono-servicio">🎧</div>
+            <h3>Audio</h3>
+            <p>Extensa colección de audiolibros con reproducciones accesibles.</p>
+        </div>
+        <div class="tarjeta-servicio">
+            <div class="icono-servicio">⠃</div>
+            <h3>Braille</h3>
+            <p>Literatura, revistas y documentos impresos en sistema braille.</p>
+        </div>
+    </div>
+
+    <div class="grid-servicios-abajo">
+        <div class="tarjeta-servicio">
+            <div class="icono-servicio">👥</div>
+            <h3>Talleres</h3>
+            <p>Actividades formativas y culturales diseñadas inclusivamente.</p>
+        </div>
+        <div class="tarjeta-servicio">
+            <div class="icono-servicio">💻</div>
+            <h3>Informática</h3>
+            <p>Puestos con lectores de pantalla y magnificadores instalados.</p>
+        </div>
+    </div>
+
+    <!-- Catálogo de Productos con opción de compra para el cliente -->
+    <section class="contenedor-productos">
+        <h2 class="titulo-seccion" style="margin: 0;">NUESTROS PRODUCTOS</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE PRODUCTO</th>
+                    <th>CATEGORÍA / MARCA</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                        {% for item in productos %}
+                        <tr>
+                            <td class="td-id">{{ item.id }}</td>
+                            <!-- Aquí actualizamos a los nombres exactos de tu models.py -->
+                            <td class="td-nombre">{{ item.nombre_producto }}</td> 
+                            <td>{{ item.marca_producto }}</td> 
+                            <td class="td-acciones">
+                                <button class="btn-comprar" type="button" style="background-color: #c4ff00; color: black; padding: 5px 15px; border: none; font-weight: bold; cursor: pointer;">
+                                    Comprar / Reservar
+                                </button>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" style="text-align: center; padding: 20px;">
+                                No hay productos disponibles en este momento.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Pie de página -->
+    <footer>
+        <div>© 2026 BIBLIOTECA SaBré - ACCESO UNIVERSAL</div>
+        <div>Privacidad | Contacto | Soporte Técnico</div>
+    </footer>
+
+</body>
+</html>
